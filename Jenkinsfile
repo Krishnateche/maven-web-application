@@ -1,6 +1,7 @@
 node
 {
     def mavenHome = tool name: "maven3.6.3"
+    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '5', numToKeepStr: '')), pipelineTriggers([pollSCM('* * * * *')])])
 
  stage('CheckoutCode')
  {
