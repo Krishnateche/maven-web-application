@@ -1,14 +1,11 @@
 node
 {
-    def mavenHome = tool name: "maven3.6.3"
-    properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '5', numToKeepStr: '')), pipelineTriggers([pollSCM('* * * * *')])])
-
+ def mavenHome = tool name: "maven3.6.2"
  stage('CheckoutCode')
  {
-  git branch: 'development', credentialsId: 'dfa30a9e-f60b-4bfd-9614-e3a8f48b53c1', url: 'https://github.com/Krishnateche/maven-web-application.git'
+   git branch: 'development', credentialsId: '1d7e5f63-f519-4806-b8a0-ca6f5a0ae6a1', url: 'https://github.com/Krishnateche/maven-web-application.git'
  }
-
- stage('Build')
+ stage('build')
  {
  sh "${mavenHome}/bin/mvn clean package"
  }
